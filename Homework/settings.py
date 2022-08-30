@@ -105,7 +105,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 3,
+    'PAGE_SIZE': 5,
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'products': '60/hour',
+        'product': '120/hour',
+        'orders': '60/hour',
+        'order': '120/hour'
+    },
+    'EXCEPTION_HANDLER': 'api.utils.custom_exception_handler'
 }
 
 # Internationalization

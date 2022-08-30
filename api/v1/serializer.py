@@ -1,7 +1,8 @@
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
+
 from products.models import Product
 from orders.models import Order
-from rest_framework.validators import UniqueTogetherValidator
 
 
 class ProductSerializer(serializers.ModelSerializer):
